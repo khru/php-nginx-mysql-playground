@@ -2,7 +2,7 @@ version: "3.8"
 services:
   # PHP service
   app:
-    build: .
+    build: .docker
     container_name: ${APP_CONTAINER_NAME}
     working_dir: /app
     env_file:
