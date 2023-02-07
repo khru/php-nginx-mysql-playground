@@ -3,6 +3,7 @@ services:
   # PHP service
   app:
     build: .docker
+    user: ${DOCKER_APP_UUID:-0}
     container_name: ${APP_CONTAINER_NAME}
     working_dir: /app
     env_file:
@@ -15,6 +16,7 @@ services:
   # MySQL database service
   db:
     image: mysql:${DB_VERSION}
+    user: ${DOCKER_DB_UUID:-0}
     container_name: ${DB_CONTAINER_NAME}
     ports:
       - "${DB_PORT}:${DB_PORT}"
@@ -33,6 +35,7 @@ services:
   # Nginx service
   nginx:
     image: nginx:${NGINX_VERSION}
+    user: ${DOCKER_NGINX_UUID:-0}
     container_name: ${NGINX_CONTAINER_NAME}
     env_file:
       - ".env"
@@ -47,6 +50,7 @@ services:
   composer:
     container_name: ${COMPOSER_CONTAINER_NAME}
     image: composer:${COMPOSER_VERSION}
+    user: ${DOCKER_COMPOSER_UUID:-0}
     volumes:
       - ./:/app
     working_dir: /app
