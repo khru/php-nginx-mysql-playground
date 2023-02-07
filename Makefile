@@ -28,6 +28,7 @@ MAKEFLAGS += --warn-undefined-variables
 # remove some "magic make behavior"
 MAKEFLAGS += --no-builtin-rules
 
+-include ./.env
 -include .make/.env
 
 # Common variable to pass arbitrary options to targets
@@ -44,13 +45,13 @@ include .make/*.mk
 
 ## Usage:
 ## make-init
-##
+## Adds .make .env into the .env file
 ## make-init ENVS="KEY_1=value1 KEY_2=value2"
 .PHONY: make-init
-make-init: ENVS= ## Initializes the local .makefile/.env file with ENV variables for make
+make-init: ENVS=#
 make-init:
 	@cp ./.env.example ./.env
 	@for variable in $(ENVS); do \
-	  echo $$variable | tee -a .make/.env; \
+	  echo $$variable | tee -a ./.env; \
 	  done
 	@echo "Please update your ./.env file with your local settings"

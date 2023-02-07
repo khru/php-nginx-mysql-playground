@@ -18,10 +18,7 @@ composer-remove: ## Deletes the vendor directory
 
 .PHONY: composer
 composer: ## Runs any composer argument call with ARGS="whatever"
-	ifndef ARGS
-		$(error ARGS is not set please call make composer ARGS="whatever")
-	endif
-
 	@echo "COMPOSER_CONTAINER=$(COMPOSER_CONTAINER_NAME)"
 	@echo "ARGS=$(ARGS)"
-	docker-compose run --rm --service-ports $(COMPOSER_CONTAINER_NAME?) composer $(ARGS)
+	docker-compose run --rm --service-ports $(COMPOSER_CONTAINER_NAME) composer $(ARGS)
+	@$(MAKE) fix-permissions

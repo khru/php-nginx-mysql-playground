@@ -6,11 +6,8 @@ docker-up: ## Create and start all docker containers
 
 .PHONY: docker-down
 docker-down: ## Stop and remove all docker containers.
-	docker-compose down
+	docker-compose down --remove-orphans
 
-.PHONY: docker-config
-docker-config: validate-docker-variables ## List the configuration
-	docker-compose config
 
 .PHONY: docker-prune
 docker-prune: ## Remove ALL unused docker resources, including volumes

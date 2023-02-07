@@ -53,7 +53,7 @@ services:
     env_file:
       - ".env"
     ports:
-      - 85:85
+      - "85:85"
 
 networks:
   app-network:

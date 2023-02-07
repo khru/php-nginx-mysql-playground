@@ -13,6 +13,8 @@ try {
 
     echo 'Database connected successfully';
     echo '<br />';
+    $result = $conn->query('SELECT VERSION()');
+    var_dump($result->fetchAll());
 } catch (\Throwable $t) {
     echo 'Error: ' . $t->getMessage();
     echo '<br />';
