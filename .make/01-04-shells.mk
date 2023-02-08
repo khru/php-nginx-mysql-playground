@@ -14,4 +14,4 @@ bash-nginx: ## Connect to NGINX container.
 
 .PHONY: bash-composer
 bash-composer: ## Connect to COMPOSER container.
-	@docker-compose run --rm --service-ports -u $(DOCKER_COMPOSER_UUID) $(COMPOSER_CONTAINER_NAME) /bin/bash
+	docker-compose run --rm --service-ports -u $(DOCKER_COMPOSER_UUID) $(COMPOSER_CONTAINER_NAME) /bin/bash
