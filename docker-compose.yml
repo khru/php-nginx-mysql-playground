@@ -16,7 +16,7 @@ services:
   # MySQL database service
   db:
     image: mysql:${DB_VERSION}
-    user: ${DOCKER_DB_UUID:-0}
+    #user: ${DOCKER_DB_UUID:-0}
     container_name: ${DB_CONTAINER_NAME}
     ports:
       - "${DB_PORT}:${DB_PORT}"
@@ -35,7 +35,7 @@ services:
   # Nginx service
   nginx:
     image: nginx:${NGINX_VERSION}
-    user: ${DOCKER_NGINX_UUID:-0}
+    #user: ${DOCKER_NGINX_UUID:-0}
     container_name: ${NGINX_CONTAINER_NAME}
     env_file:
       - ".env"
